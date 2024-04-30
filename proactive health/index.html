@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pro Planet Tracker</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Include jQuery -->
+    <script src="index.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Header with branding -->
+    <header>
+        <div class="logo">
+            <img src="a_professional_logo_for_pro_planetA_mobile_appl-removebg-preview__1_-removebg-preview.png" alt="Pro Planet Logo">
+            <h3>ProPlanet</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#main">SUGGESTIONS</a></li>
+                <li><a href="#container">CONTACT US</a></li>
+
+         
+            </ul>
+        </nav>
+        
+    </header>
+    <main>
+      
+        <div class="content">
+            
+            <div class="text-section">
+                <h1>Check if you are </h1><span> pro </span><h1>person or not</h1>
+                <button id="check-button" href="#main">Check</button>
+            </div>
+          
+            <div class="fruit-bowls">
+                <img src="_Homepage_Illustrative_Design_The_hom__1_-removebg-preview.png" alt="Fruit Bowl with Strawberries and Blueberries" class="fruit-bowl">
+                
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Main section with user activity tracking and suggestions -->
+    <main id="main">
+    
+        <div id="tracking-notification" class="tracking-notification" style="display: none;">
+            <div class="spinner"></div>
+            <span>Your activities are being tracked.</span>
+           
+        </div>
+        <section id="activity-tracker">
+            <h2>Activity Tracker</h2>
+            <p>Track your activities to see if you're a Pro Planet person!</p>
+            <button id="start-tracking-button">Start Tracking</button>
+           
+            <section class="fun-fact-section">
+                <h2>Did You Know?</h2>
+                <p id="fun-fact">Click the button to reveal a fun fact!</p>
+                <button id="new-fun-fact-btn">Get a Fun Fact</button>
+                
+            </section>
+            <h2>Sustainability Score</h2>
+            <p>Your current sustainability score is: <span id="sustainabilityScore">0</span></p>
+            <button onclick="calculateScore()">Calculate Score</button>
+            
+   
+        </section>
+        <br>
+        <header class="bg-primary text-white p-4">
+            <div class="text-center" >
+                <h1 class="display-4">Categorized Suggestions</h1>
+                <p class="lead">Explore sustainable living tips across various categories.</p>
+            </div>
+        </header>
+    
+        <!-- <div class="divider"></div> A simple divider for visual separation -->
+    
+        <!-- Food Choices Section -->
+        <!-- Food Choices Section -->
+<section class="container my-5 food-bg">
+    <div class="category-heading">Food Choices</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="suggestion-card" id="local-foods-card"> <!-- Clickable card -->
+                <h3 class="font-weight-bold">Choose Locally Sourced Foods <i class="fas fa-utensils"></i></h3>
+                <p>Support local farmers and reduce carbon emissions associated with transportation.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="local-foods-checkbox">
+                    <label class="form-check-label" for="local-foods-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="suggestion-card" id="reduce-meat-card"> <!-- Clickable card -->
+                <h3 class="font-weight-bold">Reduce Meat Consumption <i class="fas fa-seedling"></i></h3>
+                <p>Eating less meat helps decrease greenhouse gas emissions and preserves natural resources.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="reduce-meat-checkbox">
+                    <label class="form-check-label" for="reduce-meat-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Transportation Section -->
+<section class="container my-5 transport-bg">
+    <div class="category-heading">Transportation</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="suggestion-card" id="public-transit-card"> <!-- Clickable card -->
+                <h3 class="font-weight-bold">Use Public Transit <i class="fas fa-bus"></i></h3>
+                <p>Opt for buses, trains, or carpools to reduce traffic congestion and air pollution.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="public-transit-checkbox">
+                    <label class="form-check-label" for="public-transit-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="suggestion-card" id="bike-walk-card" style="background-color: rgb(201, 248, 155);"> <!-- Clickable card -->
+                <h3 class="font-weight-bold">Bike or Walk Whenever Possible <i class="fas fa-walking"></i></h3>
+                <p>Choose active transportation options to stay healthy and minimize your environmental impact.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="bike-walk-checkbox">
+                    <label class="form-check-label" for="bike-walk-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Shopping Habits Section -->
+<section class="container my-5 shopping-bg">
+    <div class="category-heading">Shopping Habits</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="suggestion-card" id="shop-secondhand-card"> <!-- Clickable card -->
+                <h3 class="font-weight-bold">Shop Secondhand <i class="fas fa-recycle"></i></h3>
+                <p>Reduce waste and support sustainable fashion by buying gently used clothing and goods.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shop-secondhand-checkbox">
+                    <label class="form-check-label" for="shop-secondhand-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="suggestion-card" id="eco-friendly-products-card" style="background-color: rgb(201, 248, 155)"><!-- Clickable card -->
+                <h3 class="font-weight-bold">Choose Eco-Friendly Products <i class="fas fa-leaf"></i></h3>
+                <p>Look for items made from recycled materials or with minimal packaging to reduce your ecological footprint.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="eco-friendly-products-checkbox">
+                    <label class="form-check-label" for="eco-friendly-products-checkbox">
+                        Add to Sustainability Score
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+                <!-- Suggestions will be dynamically added here -->
+            </ul>
+        </section>
+    
+    <div id="container" style="padding: 50px;">
+        <h1>Contact Us</h1>
+        <form id="contact-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+    
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+    
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+    
+          <button type="submit">Send</button>
+        </form>
+        <div id="response-message"></div>
+    </div>
+</main>
+<section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h3 class="faq-question">What is the purpose of this website?</h3>
+          <div class="faq-answer">
+            <p>The purpose of this website is to provide information and resources to help you live a more sustainable lifestyle.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How can I contact you?</h3>
+          <div class="faq-answer">
+            <p>You can contact us through the contact form on the website or by sending an email to info@example.com.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Do you offer any sustainability workshops or events?</h3>
+          <div class="faq-answer">
+            <p>Yes, we regularly host sustainability workshops and events. You can check our events page for upcoming activities.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How can I get involved in your sustainability initiatives?</h3>
+          <div class="faq-answer">
+            <p>There are several ways you can get involved, such as volunteering, participating in our campaigns, or becoming a member. Please visit our "Get Involved" page for more information.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+
+    <!-- Footer with additional info and fun facts -->
+    <footer>
+        <p>&copy; 2024 Pro Planet Tracker. All rights reserved.</p>
+   
+    </footer>
+
+    <!-- Pop-up modal for sustainability suggestions -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h3>Pro Planet Suggestion</h3>
+            <p id="popup-message">Remember to deselect disposable cutlery while ordering food!</p>
+        </div>
+    </div>
+ 
+
+
+    </script>
+  <script>
+    const funFacts = [
+    "Over 8 million metric tons of plastic waste enter the oceans each year. By refusing disposable cutlery and opting for reusable options with food delivery, you help reduce this environmental impact.",
+  "Compostable packaging is made from renewable plant-based materials like corn starch or sugarcane pulp. These materials break down naturally and help reduce landfill waste.",
+  "Recycling just one ton of paper can save 17 trees, 7,000 gallons of water, and 4,100 kWh of electricity. Choosing restaurants that use recycled or recyclable packaging contributes to these savings.",
+  "Food delivery by bike or electric vehicle emits less carbon dioxide compared to traditional delivery methods. Selecting services that use eco-friendly transportation can reduce your carbon footprint.",
+  "Using a reusable food container can prevent hundreds of disposable containers from ending up in landfills each year. Bringing your own container to a restaurant for takeout reduces waste.",
+  "Supporting restaurants that source ingredients locally helps reduce carbon emissions associated with long-distance transportation. It also supports local farmers and businesses.",
+  "In the United States, up to 40% of food is wasted. By meal planning and ordering only what you need, you can help reduce food waste and its environmental impact."
+];
+
+
+// Function to get a random fun fact
+function getRandomFunFact() {
+  const randomIndex = Math.floor(Math.random() * funFacts.length);
+  return funFacts[randomIndex];
+}
+
+// Function to update the fun fact on the page
+function updateFunFact() {
+  const funFactElement = document.getElementById("fun-fact");
+  funFactElement.textContent = getRandomFunFact();
+}
+
+// Event listener for the button to get a new fun fact
+const funFactButton = document.getElementById("new-fun-fact-btn");
+funFactButton.addEventListener("click", updateFunFact);
+
+// Display a fun fact when the page loads
+document.addEventListener("DOMContentLoaded", updateFunFact);
+
+    
+
+  </script> 
+  <script>
+    $(document).ready(function() {
+        $('#new-user-btn').click(function() {
+            $('#new-user-message').removeClass('hidden');
+            setTimeout(function() {
+                $('#new-user-message').addClass('hidden');
+            }, 3000);
+        });
+    });
+    $(document).ready(function() {
+  $('.faq-question').click(function() {
+    $(this).toggleClass('active');
+    $(this).next('.faq-answer').slideToggle(300);
+  });
+});
+// This function calculates the sustainability score based on checked parameters
+
+
+
+</script>
+<script>
+ // This function calculates the sustainability score based on checked parameters
+function calculateScore() {
+    // Define the parameters to consider
+    const parameters = [
+        document.getElementById("local-foods-checkbox"),
+        document.getElementById("reduce-meat-checkbox"),
+        document.getElementById("public-transit-checkbox"),
+        document.getElementById("bike-walk-checkbox"),
+        document.getElementById("shop-secondhand-checkbox"),
+        document.getElementById("eco-friendly-products-checkbox")
+    ];
+
+    // Initialize the score
+    let score = 0;
+
+    // Increment the score for each checked parameter
+    parameters.forEach(param => {
+        if (param.checked) {
+            score += 1; // Each checked parameter adds 1 to the score
+        }
+    });
+
+    // Display the updated score in the HTML
+    document.getElementById("sustainabilityScore").textContent = score;
+}
+
+  </script>
+    
+</body>
+</html>

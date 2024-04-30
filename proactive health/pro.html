@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pro Planet Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap for styling -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Include jQuery -->
+    <link rel="stylesheet" href="pro.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Function to open the pop-up with specific content
+        function openPopup(message) {
+            $('#popup-message').text(message); // Set the pop-up message
+            $('#popup').fadeIn(); // Smooth transition
+        }
+
+        // Function to create a new section with information and buttons
+        function createSection(headerText) {
+            // Remove existing dynamic sections if they exist
+            $('#dynamic-section').remove();
+
+            // Create a new section dynamically
+            const newSection = `
+            <section id="dynamic-section" class="container my-5">
+                <div class="section-header">
+                    <h2>${headerText}</h2> <!-- Card heading passed as parameter -->
+                </div>
+                <div class="section-content">
+                    <p>Additional information related to "${headerText}".</p> <!-- Description or additional info -->
+                </div>
+                <div class="section-buttons">
+                    <button class="btn btn-primary" id="learn-more">Learn More</button> <!-- Button for further action -->
+                    <button class="btn btn-secondary" id="close-section">Close</button> <!-- Button to close the section -->
+                </div>
+            </section>
+            `;
+
+            // Append the new section to the main content
+            $('main').append(newSection);
+
+            // Event handler for 'Learn More'
+            $('#learn-more').click(function() {
+                // Action for 'Learn More'
+                alert(`You clicked 'Learn More' on ${headerText}`);
+            });
+
+            // Event handler for 'Close'
+            $('#close-section').click(function() {
+                $('#dynamic-section').fadeOut(); // Fade out and remove the section
+            });
+        }
+
+        // Event handlers for card clicks with pop-up suggestions and creating a new section
+        $('#local-foods-card').click(function() {
+            openPopup('Choosing locally sourced foods reduces transportation-related carbon emissions and supports local farmers.');
+            createSection('Choose Locally Sourced Foods'); // Create a new section
+        });
+
+        $('#reduce-meat-card').click(function() {
+            openPopup('Reducing meat consumption helps decrease greenhouse gas emissions and preserves natural resources.');
+            createSection('Reduce Meat Consumption'); // Create a new section
+        });
+
+        $('#public-transit-card').click(function() {
+            openPopup('Using public transit or carpooling can reduce traffic congestion and air pollution.');
+            createSection('Use Public Transit'); // Create a new section
+        });
+
+        $('#bike-walk-card').click(function() {
+            openPopup('Biking or walking reduces your carbon footprint while promoting a healthy lifestyle.');
+            createSection('Bike or Walk Whenever Possible'); // Create a new section
+        });
+
+        // Add additional card event handlers as needed...
+    });
+    </script>
+</head>
+<body>
+    <!-- Header with branding and navbar -->
+    <header>
+        <h1>Pro Planet Tracker</h1>
+        <p>Your journey towards a more sustainable lifestyle</p>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#activity-tracker">Activity Tracker</a></li>
+                <li><a href="#sustainability-suggestions">Sustainability Suggestions</a></li>
+                <li><a href="#contact-us">Contact Us</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main section with user activity tracking and sustainability suggestions -->
+    <main>
+        <!-- Activity Tracker section -->
+        <section id="activity-tracker">
+            <h2>Activity Tracker</h2>
+            <p>Track your activities to see if you're a Pro Planet person!</p>
+            <button onclick="trackActivity()">Start Tracking</button>
+        </section>
+
+        <div class="divider"></div> <!-- A simple divider for visual separation -->
+
+        <!-- Suggestion cards -->
+        <section class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="suggestion-card" id="local-foods-card"> <!-- Clickable card -->
+                        <h3 class="font-weight-bold">Choose Locally Sourced Foods <i class="fas fa-utensils"></i></h3>
+                        <p>Support local farmers and reduce carbon emissions associated with transportation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="suggestion-card" id="reduce-meat-card"> <!-- Clickable card -->
+                        <h3 class="font-weight-bold">Reduce Meat Consumption <i class="fas fa-seedling"></i></h3>
+                        <p>Eating less meat helps decrease greenhouse gas emissions and preserves natural resources.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More sections and content... -->
+    </main>
+
+    <!-- Pop-up modal for sustainability suggestions -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h3>Pro Planet Suggestion</h3>
+            <p id="popup-message">Remember to deselect disposable cutlery while ordering food!</p>
+        </div>
+    </div>
+</body>
+</html>
